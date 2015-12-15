@@ -7,7 +7,10 @@
   "license": "MIT",
   "author": "Keith Cirkel (http://keithcirkel.co.uk)",
   "main": "lib/index.js",
-  "repository": "git@github.com:packagesmith/packagesmith.questions.repository",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/packagesmith/packagesmith.questions.repository"
+  },
   "scripts": {
     "lint": "eslint src test --ignore-path .gitignore",
     "prepublish": "babel src -d lib",
