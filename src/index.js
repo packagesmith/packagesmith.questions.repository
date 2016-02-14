@@ -9,7 +9,7 @@ export function descriptionQuestion() {
         return false;
       }
       try {
-        const packageJson = JSON.parse(await readFile(`${directory}/package.json`, 'utf8'));
+        const packageJson = JSON.parse(await readFile(`${ directory }/package.json`, 'utf8'));
         if (typeof packageJson.repository === 'object') {
           answers.repository = packageJson.repository.url;
           return false;
@@ -20,14 +20,14 @@ export function descriptionQuestion() {
         throw new Error('Couldn\'t determine repository from pacakge.json');
       } catch (packageJsonError) {
         try {
-          const iniContents = ini.parse(await readFile(`${directory}/.git/config`, 'utf8'));
+          const iniContents = ini.parse(await readFile(`${ directory }/.git/config`, 'utf8'));
           const origin = iniContents['remote "origin"'].url;
           if (origin) {
             answers.repository = origin;
             return false;
           }
           return true;
-        } catch (error) {
+        } catch (gitConfigError) {
           return true;
         }
       }

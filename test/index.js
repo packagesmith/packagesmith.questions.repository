@@ -1,14 +1,14 @@
 import chai from 'chai';
 import chaiSpies from 'chai-spies';
 chai.use(chaiSpies).should();
-import repositoryQuestion from '../src/';
 import fileSystem from 'fs-promise';
+import repositoryQuestion from '../src/';
 describe('repositoryQuestion', () => {
 
   it('returns an object with expected keys', () => {
     repositoryQuestion()
       .should.be.an('object')
-      .with.keys([ 'name', `message`, `when` ]);
+      .with.keys([ 'name', 'message', 'when' ]);
   });
 
   describe('when function', () => {
