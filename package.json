@@ -35,12 +35,12 @@
   "babel": {
     "compact": false,
     "ignore": "node_modules",
+    "plugins": [
+      "transform-runtime"
+    ],
     "presets": [
       "es2015",
       "stage-2"
-    ],
-    "plugins": [
-      "transform-runtime"
     ],
     "retainLines": true,
     "sourceMaps": "inline"
