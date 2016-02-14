@@ -1,1 +1,1 @@
-{"extends":["strict","strict/mocha"]}
+{"extends":["strict","strict/mocha"],"rules":{"no-empty-function":0}}

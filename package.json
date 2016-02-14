@@ -47,7 +47,10 @@
   },
   "eslintConfig": {
     "extends": "strict",
-    "parser": "babel-eslint"
+    "parser": "babel-eslint",
+    "rules": {
+      "no-empty-function": 0
+    }
   },
   "dependencies": {
     "babel-runtime": "^6.5.0",
