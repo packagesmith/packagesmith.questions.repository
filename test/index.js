@@ -23,23 +23,23 @@ describe('repositoryQuestion', () => {
       fileSystem.readFile = chai.spy((file) => contents[file]);
     });
 
-    it('returns false if `repository` is in answers object', async function() {
+    it('returns false if `repository` is in answers object', async function () {
       (await whenFunction({ repository: 'foo' }, '/foo/bar')).should.equal(false);
       fileSystem.readFile.should.not.have.been.called();
     });
 
-    it('reads package.json if repository is not in answers', async function() {
+    it('reads package.json if repository is not in answers', async function () {
       (await whenFunction({}, '/foo/bar'));
       fileSystem.readFile.should.have.been.called(1).with.exactly('/foo/bar/package.json', 'utf8');
     });
 
-    it('returns false and mutates answers if `repository` is in package.json', async function() {
+    it('returns false and mutates answers if `repository` is in package.json', async function () {
       const answers = {};
       (await whenFunction(answers, '/foo/bar')).should.equal(false);
       answers.should.have.property('repository', 'packagejsonbar');
     });
 
-    it('reads .git/config if `repository` is not in package.json', async function() {
+    it('reads .git/config if `repository` is not in package.json', async function () {
       const answers = {};
       contents['/foo/bar/package.json'] = '{}';
       (await whenFunction(answers, '/foo/bar')).should.equal(false);
@@ -48,7 +48,7 @@ describe('repositoryQuestion', () => {
       answers.should.have.property('repository', 'gitconfigbar');
     });
 
-    it('returns true if reading package.json and .git/config causes error', async function() {
+    it('returns true if reading package.json and .git/config causes error', async function () {
       const answers = {};
       fileSystem.readFile = chai.spy(() => {
         throw new Error('foo');
